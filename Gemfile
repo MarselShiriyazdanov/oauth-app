@@ -25,6 +25,8 @@ gem "simple_form"
 gem "slim"
 
 # all other gems
+gem "omniauth-facebook"
+gem "omniauth-google-oauth2"
 gem "decent_decoration"
 gem "decent_exposure"
 gem "devise"

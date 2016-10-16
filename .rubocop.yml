@@ -51,3 +51,7 @@ Style/FrozenStringLiteralComment:
 
 Style/StringMethods:
   Enabled: true
+
+Metrics/MethodLength:
+  Exclude:
+    - spec/support/helpers/omniauth_helpers.rb

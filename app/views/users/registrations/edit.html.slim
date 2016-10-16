@@ -31,3 +31,6 @@
           registration_path(resource_name),
           data: { confirm: "Are you sure?" },
           method: :delete
+
+.row
+  = render "identities/list", identities: current_user.identities
