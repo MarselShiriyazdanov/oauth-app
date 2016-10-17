@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :identities, only: :destroy
+  resource :passwords, only: %i(edit update)
 end

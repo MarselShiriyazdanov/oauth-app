@@ -20,7 +20,25 @@ feature "Sign in with social account" do
     context "when user not found" do
       let(:user) { User.last }
 
-      it_behaves_like "success sign in"
+      before do
+        visit new_user_session_path
+        click_link "Sign in with Facebook"
+      end
+
+      it "forces user to update password" do
+        expect(page).to have_content("Set your password, please")
+        visit root_path
+        expect(page).to have_content("Set your password, please")
+      end
+
+      context "when user updates password" do
+        it "redirect user to home page" do
+          fill_form(:user, enter_new_password: "123456", confirm_your_new_password: "123456")
+          click_on "Update password"
+          expect(page).to have_content(I18n.t("passwords.updated"))
+          expect(page).to have_content("Home")
+        end
+      end
     end
   end
 

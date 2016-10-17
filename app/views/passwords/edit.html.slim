@@ -1,0 +1,17 @@
+.row
+  .columns
+    h2 = title("Set password")
+
+.row
+  .medium-5.columns
+    = simple_form_for current_user,
+        as: :user,
+        url: passwords_path,
+        html: { method: :put } do |f|
+
+      .form-inputs
+        = f.input :password, required: true, hint: false
+        = f.input :password_confirmation, required: true
+
+      .form-actions
+        = f.button :submit, "Update password"

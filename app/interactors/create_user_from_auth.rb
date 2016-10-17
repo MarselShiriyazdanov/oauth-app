@@ -21,7 +21,8 @@ class CreateUserFromAuth
       email: auth.info.email,
       full_name: auth.info.name,
       password: password,
-      password_confirmation: password
+      password_confirmation: password,
+      password_change_needed: true
     }
   end
 end
