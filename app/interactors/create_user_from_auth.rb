@@ -16,13 +16,26 @@ class CreateUserFromAuth
   private
 
   def user_params
-    password = Devise.friendly_token.first(8)
     {
       email: auth.info.email,
-      full_name: auth.info.name,
+      first_name: first_name,
+      last_name: last_name,
+      gender: auth.extra.raw_info.gender,
       password: password,
       password_confirmation: password,
       password_change_needed: true
     }
+  end
+
+  def password
+    @password ||= Devise.friendly_token.first(8)
+  end
+
+  def first_name
+    auth.info.first_name || auth.extra.raw_info.first_name
+  end
+
+  def last_name
+    auth.info.last_name || auth.extra.raw_info.last_name
   end
 end

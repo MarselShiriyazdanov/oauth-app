@@ -10,7 +10,9 @@
         html: { method: :put } do |f|
 
       .form-inputs
-        = f.input :full_name, required: true, autofocus: true
+        = f.input :first_name, autofocus: true
+        = f.input :last_name
+        = f.input :gender
         = f.input :email, required: true
         = f.input :password,
             autocomplete: "off",

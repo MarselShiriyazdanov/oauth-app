@@ -3,7 +3,5 @@ class User < ActiveRecord::Base
     :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
     omniauth_providers: Identity::PROVIDERS
 
-  validates :full_name, presence: true
-
   has_many :identities, dependent: :destroy
 end
