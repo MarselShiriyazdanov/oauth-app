@@ -5,6 +5,7 @@ class User
       last_name
       gender
       email
+      current_password
       password
       password_confirmation
     ).freeze
