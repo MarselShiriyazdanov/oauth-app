@@ -1,16 +1,13 @@
 class CreateUserFromAuth
-  attr_reader :auth
-  private :auth
+  include Interactor
 
-  def initialize(auth)
-    @auth = auth
-  end
+  delegate :auth, to: :context
 
   def call
     user = User.new(user_params)
     user.skip_confirmation!
     user.save!
-    user
+    context.user = user
   end
 
   private

@@ -24,12 +24,12 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def connect_identity
-    ConnectIdentity.new(current_user, auth).call
+    ConnectIdentity.call(user: current_user, auth: auth)
     redirect_to edit_user_registration_path
   end
 
   def process_sign_in
-    user = FetchOauthUser.new(auth).call
+    user = FetchOauthUser.call(auth: auth).user
     sign_in_and_redirect user, event: :authentication
   end
 end

@@ -1,9 +1,9 @@
 require "rails_helper"
 
 describe ConnectIdentity do
-  let(:service) { described_class.new(user, auth_hashie) }
+  let(:interactor) { described_class.new(user: user, auth: auth_hashie) }
 
-  subject(:connect_social_account) { service.call }
+  subject(:connect_social_account) { interactor.call }
 
   context "when identity exists" do
     let(:user) { create(:user) }

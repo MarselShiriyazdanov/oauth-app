@@ -1,13 +1,10 @@
 class FetchOauthUser
-  attr_reader :auth
-  private :auth
+  include Interactor
 
-  def initialize(auth)
-    @auth = auth
-  end
+  delegate :auth, to: :context
 
   def call
-    user_found_by_uid || user_found_by_email || new_user
+    context.user = user_found_by_uid || user_found_by_email || new_user
   end
 
   private
@@ -17,10 +14,10 @@ class FetchOauthUser
   end
 
   def user_found_by_email
-    FindUserByEmail.new(auth).call
+    FindUserByEmail.call(auth: auth).user
   end
 
   def new_user
-    CreateUserFromAuth.new(auth).call
+    CreateUserFromAuth.call(auth: auth).user
   end
 end

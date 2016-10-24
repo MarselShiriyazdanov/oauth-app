@@ -1,11 +1,7 @@
 class ConnectIdentity
-  attr_reader :user, :auth
-  private :user, :auth
+  include Interactor
 
-  def initialize(user, auth)
-    @user = user
-    @auth = auth
-  end
+  delegate :user, :auth, to: :context
 
   def call
     update_or_create_identity

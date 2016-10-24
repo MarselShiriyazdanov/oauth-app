@@ -2,10 +2,10 @@ require "rails_helper"
 
 describe CreateUserFromAuth do
   let(:user) { User.last }
-  let(:service) { described_class.new(auth_hashie) }
+  let(:interactor) { described_class.new(auth: auth_hashie) }
   let(:sent_emails) { ActionMailer::Base.deliveries.count }
 
-  subject { service.call }
+  subject { interactor.call }
 
   it "creates new confirmed user from auth hash" do
     expect { subject }.to change { User.count }.by(1)

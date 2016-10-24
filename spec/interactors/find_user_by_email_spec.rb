@@ -1,9 +1,9 @@
 require "rails_helper"
 
 describe FindUserByEmail do
-  let(:service) { described_class.new(auth_hashie) }
+  let(:interactor) { described_class.new(auth: auth_hashie) }
 
-  subject(:find_user_by_email) { service.call }
+  subject(:find_user_by_email) { interactor.call }
 
   context "when user not exists" do
     it { is_expected.to be_nil }

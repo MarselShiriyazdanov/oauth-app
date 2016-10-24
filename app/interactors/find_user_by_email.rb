@@ -1,17 +1,14 @@
 class FindUserByEmail
-  attr_reader :auth
-  private :auth
+  include Interactor
 
-  def initialize(auth)
-    @auth = auth
-  end
+  delegate :auth, to: :context
 
   def call
     return unless user
 
     create_identity
     user.confirm unless user.confirmed?
-    user
+    context.user = user
   end
 
   private
