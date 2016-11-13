@@ -6,4 +6,4 @@
 b Add service to sign in with:
 ul
   - Identity::PROVIDERS.each do |provider|
-    li = link_to provider_name(provider), user_omniauth_authorize_path(provider)
+    li = link_to provider.titleize, user_omniauth_authorize_path(provider)
