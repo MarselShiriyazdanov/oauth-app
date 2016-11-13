@@ -12,6 +12,6 @@ class ApplicationController < ActionController::Base
   private
 
   def check_user_password
-    redirect_to edit_passwords_path, alert: "Set your password, please" if current_user.password_change_needed
+    redirect_to edit_passwords_path, alert: "Set your password, please" if current_user.reset_password_token
   end
 end

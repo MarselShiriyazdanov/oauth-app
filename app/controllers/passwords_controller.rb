@@ -16,6 +16,6 @@ class PasswordsController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:password, :password_confirmation).merge(password_change_needed: false)
+    params.require(:user).permit(:password, :password_confirmation).merge(reset_password_token: nil)
   end
 end

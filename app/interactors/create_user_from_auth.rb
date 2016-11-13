@@ -20,7 +20,7 @@ class CreateUserFromAuth
       gender: auth.extra.raw_info.gender,
       password: password,
       password_confirmation: password,
-      password_change_needed: true
+      reset_password_token: Time.now.to_i
     }
   end
 
