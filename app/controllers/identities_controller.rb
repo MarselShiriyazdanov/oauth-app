@@ -1,8 +1,7 @@
 class IdentitiesController < ApplicationController
   before_action :authenticate_user!
 
-  expose(:identities) { current_user.identities }
-  expose(:identity)
+  expose(:identity, scope: -> { current_user.identities })
 
   def destroy
     action = identity.destroy ? :notice : :alert
