@@ -1,10 +1,7 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   Identity::PROVIDERS.each do |provider|
     define_method(provider) do
-      unless auth_verified?
-        show_verification_error
-        return
-      end
+      return show_verification_error unless auth_verified?
 
       current_user ? connect_identity : process_sign_in
     end
